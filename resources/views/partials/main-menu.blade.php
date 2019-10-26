@@ -2,7 +2,7 @@
     <a href="{{ route('home') }}" class="block">
         <img class="h-8" src="https://www.voteict.org/img/logo.svg" title="Vote ICT">
     </a>
-    <div class="leading-loose order-1 w-full items-center md:w-auto md:order-none mt-4 -mx-3 md:flex md:mx-0 md:mt-0 md:ml-auto">
+    <div class="leading-loose order-1 w-full items-center mt-4 -mx-3 sm:flex sm:mx-0 sm:mt-0 sm:ml-auto sm:w-auto sm:order-none">
         {!! $slot !!}
     </div>
     <div>

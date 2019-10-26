@@ -1,13 +1,14 @@
-@extends('layouts.base')
+@extends('layouts.base', ['background' => $background ?? ''])
 
 @section('content')
-    <header>
+    <header class="relative z-50 text-gray-600">
         @component('partials/main-menu')
             <a
-                class="block px-3 hover:text-red-500 focus:text-red-500{{ Request::is('*archive') ? ' text-red-500' : '' }}"
+                class="block px-3 hover:text-red-500 focus:text-red-500 outline-none {{ Request::is('*archive') ? ' text-red-500' : '' }}"
                 href="{{ route('archive') }}"
             >
-                Archive
+                @include('partials/icon', ['name' => 'archive', 'class' => 'inline-block w-6 h-6 align-text-bottom'])
+                Message Archive
             </a>
             @foreach(config('voteict.locales') as $name => $locale)
                 @php
@@ -23,15 +24,15 @@
                     }
                 @endphp
                 <a
-                    class="block px-2 py-5 hover:text-blue-500 focus:text-blue-500 focus:outline-0"
+                    class="block px-2 hover:text-red-500 focus:text-red-500 focus:outline-0"
                     href="{{ url(implode('/', $segments)) }}"
                 >
-                    @include('partials/icon', ['name' => $locale, 'class' => 'h-6'])
+                    @include('partials/icon', ['name' => $locale, 'class' => 'inline-block w-6 h-6'])
                 </a>
             @endforeach
         @endcomponent
     </header>
-    <main class="px-4 py-8 md:p-12">
+    <main>
         @if (session('status'))
             <div class="container">
                 <div class="row justify-content-center">
